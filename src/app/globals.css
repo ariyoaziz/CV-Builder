@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;          /* #f8fafc */
+    --foreground: 222 47% 11%;          /* #0f172a */
+
+    --card: 0 0% 100%;                  /* #ffffff */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;             /* #2563eb */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 214 32% 91%;           /* #e2e8f0 */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;    /* #64748b */
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;           /* #ef4444 */
+    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 36%;             /* #16a34a */
+    --warning: 38 92% 50%;              /* #f59e0b */
+
+    --border: 214 32% 91%;              /* #e2e8f0 */
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+    --cv-accent: #2563eb;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+}
+
+/* Keep dense editor forms usable on phones and narrow tablets. */
+@media screen and (max-width: 767px) {
+  #template-toolbar [role="tablist"] {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  #template-toolbar [role="tablist"] button {
+    min-width: 0;
+  }
+
+  #template-toolbar > div:last-child {
+    flex-basis: 100%;
+  }
+
+  #editor-panel .grid-cols-2,
+  #editor-panel .grid-cols-3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  #editor-panel input,
+  #editor-panel textarea,
+  #editor-panel select {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* About/help uses shadcn primitives with a compact documentation surface. */
+.about-help-view .shadow-xs,
+.about-help-view .shadow-2xs {
+  box-shadow: none;
+}
+
+.about-help-view .rounded-2xl {
+  border-radius: 0.375rem;
+}
+
+.about-help-view .rounded-xl {
+  border-radius: 0.375rem;
+}
+
+/* Reduced Motion Support (WCAG 2.2 SC 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Stylesheet for A4 Vector Output */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  /* 1. Global Reset: Remove background, margins, and scroll constraints */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* 2. Application UI Isolation: Hide all editor chrome */
+  nav,
+  #editor-panel,
+  #app-toolbar,
+  #template-toolbar,
+  #templates-panel,
+  .no-print,
+  [data-sonner-toaster],
+  button,
+  dialog,
+  [role="dialog"],
+  [role="alertdialog"] {
+    display: none !important;
+  }
+
+  /* 3. Ancestor Layout Reset: Allow natural multi-page flow without clipping */
+  main,
+  #preview-panel,
+  #cv-preview-viewport {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  /* 4. Preview Zoom Neutralization: Strip zoom transform & container scaling */
+  #cv-preview-viewport > div,
+  #cv-preview-viewport > div > div {
+    transform: none !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 5. Keep the physical paper box and its inner padding identical to preview.
+     Clone decoration so the padding is repeated when the box fragments. */
+  .cv-document,
+  #printable-cv {
+    display: block !important;
+    position: relative !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    padding: 16mm !important;
+    box-decoration-break: clone !important;
+    -webkit-box-decoration-break: clone !important;
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 6. Page Break Controls: Granular per-item protection */
+  .cv-section {
+    break-inside: auto;
+  }
+
+  .cv-header,
+  .cv-entry-item,
+  .cv-skill-row,
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Projects can be longer than the remaining space on a sheet. Let their
+     bullets flow naturally so a mostly empty page is not created. */
+  section[aria-labelledby="section-projects"],
+  section[aria-labelledby="ats-projects"],
+  section[aria-labelledby="min-projects"],
+  section[aria-labelledby="section-projects"] > div,
+  section[aria-labelledby="ats-projects"] > div,
+  section[aria-labelledby="min-projects"] > div,
+  section[aria-labelledby="section-projects"] .cv-entry-item,
+  section[aria-labelledby="ats-projects"] .cv-entry-item,
+  section[aria-labelledby="min-projects"] .cv-entry-item {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Keep section headings with their first entry */
+  h2 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Keep entry header (h3 + date row) with the content below it */
+  h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Prevent orphaned single lines */
+  p, li {
+    orphans: 2;
+    widows: 2;
+  }
+
+  /* 7. Hyperlinks: Clean ATS text without pseudo-content */
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  a[href]:after {
+    content: none !important;
+  }
+
+  /* 8. Scoped Profile Photo */
+  .cv-profile-photo {
+    object-fit: cover !important;
+  }
+}
+
+/* ============================================================
+   SCREEN-ONLY: A4 Page Break Visual Guide
+   Draws a subtle shadow line at every 297mm to indicate
+   where page boundaries fall in the live preview.
+   Hidden in print via the @media print rules above.
+   ============================================================ */
+@media screen {
+  .cv-document {
+    position: relative;
+  }
+
+  /* Page boundary guide drawn at the same physical height as @page. */
+  .cv-document::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 20;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(297mm - 2px),
+      rgba(100, 116, 139, 0.55) calc(297mm - 2px),
+      rgba(100, 116, 139, 0.55) 297mm
+    );
+    background-size: 100% 297mm;
+    background-repeat: repeat-y;
+  }
+}
