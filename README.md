@@ -53,5 +53,3 @@ Build menghasilkan folder `out` untuk static hosting seperti Cloudflare Pages at
 - Dukung pengembangan: [Saweria](https://saweria.co/ariyoaziz)
 
 ## Lisensi
-
-Tambahkan lisensi yang dipilih maintainer sebelum repository publik dibuka.
