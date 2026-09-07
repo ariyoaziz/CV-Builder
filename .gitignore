@@ -45,3 +45,5 @@ next-env.d.ts
 *.cv.json
 cv-exports/
 private-fixtures/
+/public-release/
+/public-repo/

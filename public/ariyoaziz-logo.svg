@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Ariyo Aziz</title>
+  <desc id="desc">Blue Ariyo Aziz brand mark</desc>
+  <defs>
+    <linearGradient id="blue" x1="18%" y1="92%" x2="82%" y2="8%">
+      <stop offset="0" stop-color="#173fd5"/>
+      <stop offset="1" stop-color="#13c4e8"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#blue)" d="M88 375c78-8 118-77 160-137 45-65 91-127 142-139 30-7 57 7 73 33-45-5-75 19-108 59-38 46-75 101-121 142-45 40-91 61-146 42z"/>
+  <path fill="url(#blue)" d="M152 421c62 20 115-6 166-57 33-33 61-76 87-107 33-39 66-58 99-44 30 13 49 48 50 91 1 45-16 78-46 91-32 13-64-2-89-31 24 8 42 4 53-9 12-15 8-36-8-54-12-13-23-17-34-14-18 5-37 28-63 60-43 53-91 100-153 115-43 10-80 0-107-41z"/>
+</svg>

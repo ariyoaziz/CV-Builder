@@ -34,6 +34,9 @@
 
     --radius: 0.5rem;
     --cv-accent: #2563eb;
+    --font-inter: "Inter";
+    --font-outfit: "Outfit";
+    --font-lora: "Lora";
   }
 
   * {
