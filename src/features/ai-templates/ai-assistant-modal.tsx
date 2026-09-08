@@ -127,21 +127,21 @@ export function AIAssistantModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[calc(100vw-1rem)] sm:max-w-2xl max-h-[92vh] flex flex-col gap-0 p-0 overflow-hidden">
+      <DialogContent className="w-[calc(100vw-1rem)] max-w-3xl max-h-[min(92vh,820px)] rounded-xl flex flex-col gap-0 p-0 overflow-hidden">
         {/* ── Header ── */}
-        <DialogHeader className="px-4 sm:px-6 pt-4 sm:pt-5 pb-3 sm:pb-4 border-b border-slate-200 shrink-0">
+        <DialogHeader className="px-4 sm:px-7 pt-4 sm:pt-5 pb-4 border-b border-slate-200 bg-white shrink-0">
           <div className="flex items-center gap-2.5">
             <div
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white shrink-0"
+              className="flex h-9 w-9 items-center justify-center rounded-md bg-slate-900 text-white shrink-0"
               aria-hidden="true"
             >
               <Bot className="h-4 w-4" />
             </div>
             <div>
-              <DialogTitle className="text-base font-bold text-slate-900">
+              <DialogTitle className="text-lg font-semibold tracking-tight text-slate-950">
                 {t.aiAssistant.modalTitle}
               </DialogTitle>
-              <DialogDescription className="text-xs text-slate-500 mt-0.5">
+              <DialogDescription className="text-sm text-slate-500 mt-1 leading-snug">
                 {t.aiAssistant.modalSubtitle}
               </DialogDescription>
             </div>
@@ -149,24 +149,24 @@ export function AIAssistantModal({
         </DialogHeader>
 
         {/* ── Scrollable body ── */}
-        <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-6 py-4 space-y-4 sm:space-y-5">
+        <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50/70 px-4 sm:px-7 py-5 space-y-5 sm:space-y-6">
 
           {/* ── Workflow Diagram ── */}
           <section aria-labelledby="ai-workflow-title">
             <h3
               id="ai-workflow-title"
-              className="text-xs font-semibold text-slate-700 mb-2.5 flex items-center gap-1.5"
+              className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2"
             >
-              <ArrowDown className="h-3.5 w-3.5 text-indigo-500" aria-hidden="true" />
+              <ArrowDown className="h-4 w-4 text-blue-600" aria-hidden="true" />
               {t.aiAssistant.workflowTitle}
             </h3>
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pl-0.5">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-slate-200 bg-white px-3 py-3">
               {t.aiAssistant.workflowSteps.map((step, idx) => (
                 <div key={idx} className="flex items-center gap-1.5">
                   <div
                     className={cn(
                       "w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0",
-                      "bg-indigo-50 text-indigo-600 border border-indigo-200"
+                      "bg-blue-50 text-blue-700 border border-blue-200"
                     )}
                     aria-hidden="true"
                   >
@@ -176,7 +176,7 @@ export function AIAssistantModal({
                 </div>
               ))}
             </div>
-            <p className="text-[11px] text-slate-500 leading-relaxed mt-2.5">
+            <p className="text-xs text-slate-500 leading-relaxed mt-2.5 max-w-2xl">
               {t.aiAssistant.workflowExplain}
             </p>
           </section>
@@ -194,35 +194,35 @@ export function AIAssistantModal({
                 {
                   title: t.aiAssistant.componentTemplateTitle,
                   desc: t.aiAssistant.componentTemplateDesc,
-                  color: "bg-indigo-50 border-indigo-200 text-indigo-700",
+                    color: "bg-white border-slate-200 text-slate-800",
                 },
                 {
                   title: t.aiAssistant.componentAiTitle,
                   desc: t.aiAssistant.componentAiDesc,
-                  color: "bg-slate-50 border-slate-200 text-slate-700",
+                    color: "bg-white border-slate-200 text-slate-800",
                 },
                 {
                   title: t.aiAssistant.componentImportTitle,
                   desc: t.aiAssistant.componentImportDesc,
-                  color: "bg-emerald-50 border-emerald-200 text-emerald-700",
+                    color: "bg-white border-slate-200 text-slate-800",
                 },
               ].map((comp, idx) => (
                 <div
                   key={idx}
                   className={cn(
-                    "rounded-lg border p-2.5 text-center",
+                    "rounded-lg border p-3 text-left",
                     comp.color
                   )}
                 >
                   <p className="text-[11px] font-semibold leading-snug">{comp.title}</p>
-                  <p className="text-[10px] text-slate-500 mt-1 leading-snug">{comp.desc}</p>
+                  <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">{comp.desc}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* ── AI vs Visual Template note ── */}
-          <div className="flex items-start gap-2 rounded-lg border border-slate-200 bg-slate-50/60 px-3 py-2.5">
+          <div className="flex items-start gap-2 rounded-lg border border-slate-200 bg-white px-3 py-3">
             <Layers className="h-3.5 w-3.5 text-slate-500 shrink-0 mt-0.5" aria-hidden="true" />
             <div className="text-[11px] text-slate-600 leading-relaxed">
               <span className="font-semibold text-slate-700">{t.aiAssistant.aiVsVisualTitle}: </span>
@@ -239,9 +239,9 @@ export function AIAssistantModal({
               type="button"
               onClick={() => setMode("from_scratch")}
               className={cn(
-                "rounded-xl border p-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
+                "rounded-lg border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600",
                 mode === "from_scratch"
-                  ? "border-indigo-300 bg-indigo-50"
+                  ? "border-blue-400 bg-blue-50/70"
                   : "border-slate-200 bg-white hover:border-slate-300"
               )}
               id="ai-mode-from-scratch"
@@ -250,7 +250,7 @@ export function AIAssistantModal({
               <p
                 className={cn(
                   "text-xs font-bold mb-0.5",
-                  mode === "from_scratch" ? "text-indigo-700" : "text-slate-800"
+                  mode === "from_scratch" ? "text-blue-800" : "text-slate-800"
                 )}
               >
                 {t.aiAssistant.modeFromScratch}
@@ -263,9 +263,9 @@ export function AIAssistantModal({
               type="button"
               onClick={() => setMode("improve_existing")}
               className={cn(
-                "rounded-xl border p-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
+                "rounded-lg border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600",
                 mode === "improve_existing"
-                  ? "border-indigo-300 bg-indigo-50"
+                  ? "border-blue-400 bg-blue-50/70"
                   : "border-slate-200 bg-white hover:border-slate-300"
               )}
               id="ai-mode-improve-existing"
@@ -274,7 +274,7 @@ export function AIAssistantModal({
               <p
                 className={cn(
                   "text-xs font-bold mb-0.5",
-                  mode === "improve_existing" ? "text-indigo-700" : "text-slate-800"
+                  mode === "improve_existing" ? "text-blue-800" : "text-slate-800"
                 )}
               >
                 {t.aiAssistant.modeImproveExisting}
@@ -314,9 +314,9 @@ export function AIAssistantModal({
                   onClick={() => setPromptLang("id")}
                   aria-pressed={promptLang === "id"}
                   className={cn(
-                    "flex-1 rounded text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 h-full",
+                    "flex-1 rounded text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 h-full",
                     promptLang === "id"
-                      ? "bg-white text-indigo-700 shadow-xs"
+                      ? "bg-white text-blue-700 shadow-xs"
                       : "text-slate-600 hover:text-slate-900"
                   )}
                 >
@@ -327,9 +327,9 @@ export function AIAssistantModal({
                   onClick={() => setPromptLang("en")}
                   aria-pressed={promptLang === "en"}
                   className={cn(
-                    "flex-1 rounded text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 h-full",
+                    "flex-1 rounded text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 h-full",
                     promptLang === "en"
-                      ? "bg-white text-indigo-700 shadow-xs"
+                      ? "bg-white text-blue-700 shadow-xs"
                       : "text-slate-600 hover:text-slate-900"
                   )}
                 >
@@ -340,7 +340,7 @@ export function AIAssistantModal({
           </div>
 
           {/* ── Preset description card ── */}
-          <div className="rounded-lg border border-slate-200 bg-slate-50/60 px-3 py-2.5">
+          <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
             <p className="text-xs font-semibold text-slate-700 mb-1">
               {isEn ? selectedPreset.titleEn : selectedPreset.titleId}
             </p>
@@ -442,13 +442,13 @@ export function AIAssistantModal({
           </div>
 
           {/* ── Copy action buttons ── */}
-          <div className="flex flex-wrap gap-2 pt-1">
+          <div className="sticky bottom-0 z-10 -mx-4 sm:-mx-7 flex flex-wrap gap-2 border-t border-slate-200 bg-slate-50/95 px-4 py-3 sm:px-7 backdrop-blur-sm">
             {/* Primary: Copy Prompt + Schema */}
             <Button
               type="button"
               size="sm"
               onClick={handleCopyPromptAndSchema}
-              className="gap-1.5 text-xs h-9 bg-indigo-600 hover:bg-indigo-700 text-white flex-1 sm:flex-none"
+              className="gap-1.5 text-xs h-9 bg-blue-700 hover:bg-blue-800 text-white flex-1 sm:flex-none"
               id="btn-copy-ai-prompt-and-schema"
             >
               {copiedPromptAndSchema ? (
@@ -493,7 +493,7 @@ export function AIAssistantModal({
           </div>
 
           {/* ── Prompt preview (collapsed) ── */}
-          <details className="group rounded-xl border border-slate-200 bg-slate-50/60">
+          <details className="group rounded-lg border border-slate-200 bg-white">
             <summary className="flex cursor-pointer select-none items-center justify-between px-3 py-2.5 text-xs font-semibold text-slate-700 list-none">
               <span>{t.aiAssistant.previewPromptLabel}</span>
               <ChevronDown
