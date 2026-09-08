@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { FileDown, FileUp, ClipboardPaste, RotateCcw, Printer, ChevronDown, HelpCircle, Bot } from "lucide-react";
@@ -30,7 +31,11 @@ import { ImportConfirmDialog } from "@/features/import-export/import-confirm-dia
 import { PasteJsonDialog } from "@/features/import-export/paste-json-dialog";
 import { useTranslation } from "@/i18n";
 import { cn } from "@/lib/utils";
-import { AIAssistantModal } from "@/features/ai-templates/ai-assistant-modal";
+
+const AIAssistantModal = dynamic(
+  () => import("@/features/ai-templates/ai-assistant-modal").then((module) => module.AIAssistantModal),
+  { ssr: false },
+);
 
 /**
  * Application header bar.
