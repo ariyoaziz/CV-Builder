@@ -3,6 +3,9 @@ import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://cv-builder.weareaap.workers.dev",
+  ),
   title: "CV Builder — Professional ATS-Conscious Resume Builder",
   description:
     "Create, customize, and print ATS-conscious professional CVs directly in your browser. 100% client-side and privacy-first.",
