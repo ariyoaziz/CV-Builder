@@ -216,7 +216,7 @@ export function EditorPanel() {
     <div className="flex flex-col h-full">
       {/* Panel header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 shrink-0">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.common.edit} CV
         </h2>
       </div>
@@ -271,7 +271,6 @@ export function EditorPanel() {
                 <div
                   className="pl-3 pr-1.5 py-3.5 text-slate-300 group-hover:text-slate-500 cursor-grab active:cursor-grabbing shrink-0 select-none flex items-center transition-colors"
                   title="Tarik untuk menggeser posisi bagian ini"
-                  aria-label={`Geser urutan ${label}`}
                 >
                   <GripVertical className="h-3.5 w-3.5" strokeWidth={2.5} />
                 </div>

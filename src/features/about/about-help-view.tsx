@@ -109,7 +109,6 @@ export function AboutHelpView() {
                 id="about-lang-btn-id"
                 onClick={() => setLanguage("id")}
                 aria-pressed={language === "id"}
-                aria-label={t.header.selectIndonesian}
                 className={`min-w-9 min-h-8 px-2 py-1 rounded text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex items-center justify-center select-none ${
                   language === "id"
                     ? "bg-white text-blue-700 shadow-xs"
@@ -123,7 +122,6 @@ export function AboutHelpView() {
                 id="about-lang-btn-en"
                 onClick={() => setLanguage("en")}
                 aria-pressed={language === "en"}
-                aria-label={t.header.selectEnglish}
                 className={`min-w-9 min-h-8 px-2 py-1 rounded text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex items-center justify-center select-none ${
                   language === "en"
                     ? "bg-white text-blue-700 shadow-xs"

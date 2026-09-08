@@ -166,7 +166,7 @@ export function PersonalInfoForm() {
                 {t.editor.personalInfo.removePhoto}
               </Button>
             )}
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-600">
               {t.editor.personalInfo.photoHelp}
             </p>
           </div>

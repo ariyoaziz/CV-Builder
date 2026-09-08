@@ -150,7 +150,6 @@ export function Header() {
               id="lang-btn-id"
               onClick={() => setLanguage("id")}
               aria-pressed={language === "id"}
-              aria-label={t.header.selectIndonesian}
               className={cn(
                 "min-w-9 min-h-8 px-2 py-1 rounded text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex items-center justify-center select-none",
                 language === "id"
@@ -165,7 +164,6 @@ export function Header() {
               id="lang-btn-en"
               onClick={() => setLanguage("en")}
               aria-pressed={language === "en"}
-              aria-label={t.header.selectEnglish}
               className={cn(
                 "min-w-9 min-h-8 px-2 py-1 rounded text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex items-center justify-center select-none",
                 language === "en"
