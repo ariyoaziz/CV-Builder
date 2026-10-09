@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { FileDown, FileUp, ClipboardPaste, RotateCcw, Printer, ChevronDown, HelpCircle, Bot } from "lucide-react";
+import { FileDown, FileUp, ClipboardPaste, RotateCcw, FileText, ChevronDown, HelpCircle, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -26,6 +26,7 @@ import { useCVStore } from "@/store/useCVStore";
 import { toast } from "sonner";
 import type { CVData } from "@/types/cv.types";
 import { exportCVToJSON } from "@/features/import-export/export-json";
+import { exportCVToPDF } from "@/features/import-export/export-pdf";
 import { validateAndParseImportFile } from "@/features/import-export/import-json";
 import { ImportConfirmDialog } from "@/features/import-export/import-confirm-dialog";
 import { PasteJsonDialog } from "@/features/import-export/paste-json-dialog";
@@ -103,14 +104,8 @@ export function Header() {
   };
 
   // ── Print ──────────────────────────────────────────────────────────────────
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      try {
-        window.print();
-      } catch (error) {
-        console.error("Gagal membuka dialog cetak browser:", error);
-      }
-    }
+  const handlePrint = async () => {
+    await exportCVToPDF(cvData, language);
   };
 
   return (
@@ -254,7 +249,7 @@ export function Header() {
             className="gap-1.5 text-xs min-h-9 px-3 bg-blue-600 hover:bg-blue-700 text-white font-medium"
             aria-label={t.header.printPDF}
           >
-            <Printer className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
+            <FileText className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
             <span className="hidden sm:inline">{t.header.printPDF}</span>
             <span className="sm:hidden">{t.header.printShort}</span>
           </Button>
